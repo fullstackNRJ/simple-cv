@@ -93,7 +93,7 @@
 
       #credit {
         margin-bottom: 20px;
-        font-size: 11px;
+        font-size: 18px;
         color: #999;
         text-align: center;
       }
@@ -242,6 +242,22 @@
 
       .header-right {
         align-self: flex-end;
+      }
+
+      .downlad-link-btn {
+        text-decoration: none;
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        background-color: whitesmoke;
+        border: 2px solid none;
+        border-radius: 20px;
+        padding: 15px;
+        box-shadow: 2px 2px 2px 4px #ccc;
+      }
+
+      .downlad-link-btn:hover {
+        background-color: #ccc;
       }
 
       @media screen and (max-width: 950px) {
@@ -901,7 +917,17 @@
       </div>
     </div>
     <div id="credit">
-      Made with love by <a href="https://nrj.dev/">dev nrj</a>
+      Made with
+      <span style="color: #e25555; font-size: 24px">&hearts;</span> by
+      <a href="https://www.nrj.dev/" target="_blank">dev nrj</a>
+    </div>
+    <div class="floating-btn">
+      <a
+        href="https://download942.mediafire.com/9c7eh03aqchgcLDmvOcPTIAD3hP5NnyoiVHAT4ys-T_x35g6G48tnAeAV1rgDBPkcpxIwEk7Z20t1AbFbt_c86gnk5bRFZo07gV4i__sccqQ5ECTjTgW9da_OkMCB-w5LiBo2eJuMjKQJcNpRaWRfah70cutwde3XukeY8dvAYaf/6huc2u5na6skkno/resume_updated.pdf"
+        download
+        class="downlad-link-btn"
+        >Download Resume
+      </a>
     </div>
   </body>
 </html>
