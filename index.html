@@ -245,6 +245,7 @@
       }
 
       .downlad-link-btn {
+        cursor: pointer;
         text-decoration: none;
         position: fixed;
         right: 40px;
@@ -254,10 +255,12 @@
         border-radius: 20px;
         padding: 15px;
         box-shadow: 2px 2px 2px 4px #ccc;
+        transition: all 0.5s ease-in;
       }
 
       .downlad-link-btn:hover {
         background-color: #ccc;
+        transition: all 0.5s ease-in-out;
       }
 
       .floating-context-menu {
@@ -267,6 +270,7 @@
         gap: 20px;
         right: 50px;
         bottom: 110px;
+        transition: all 0.5s ease-in;
       }
       .context-menu-item {
         text-decoration: none;
@@ -275,9 +279,12 @@
         border-radius: 20px;
         padding: 10px;
         box-shadow: 1px 1px 1px 2px #ccc;
+        transition: all 0.5s ease-in-out;
+        transition-delay: 200ms;
       }
       .context-menu-item:hover {
         background-color: #ccc;
+        transition: all 0.5s ease-in-out;
       }
 
       .hidden {
@@ -952,6 +959,7 @@
         target="_blank"
         class="context-menu-item"
         onclick="hideChoice()"
+        onmouseenter="playHoverSound()"
         href="https://drive.google.com/file/d/1CerXr7S-KY1Q51Mh0uRZd3GoWSk20_8P/view?usp=drive_link"
         >Lead Frontend Engineer</a
       >
@@ -960,21 +968,44 @@
         target="_blank"
         class="context-menu-item"
         onclick="hideChoice()"
+        onmouseenter="playHoverSound()"
         href="https://drive.google.com/file/d/1VwhDWnILL4JNi8WdDSBd-rVYwAGLuio1/view?usp=sharing"
         >Lead Full-Stack Engineer</a
       >
     </div>
-    <div class="floating-btn" onclick="showChoice()">
+    <div
+      class="floating-btn"
+      onclick="showChoice()"
+      onmouseenter="playHoverSound()"
+    >
       <a download id="download-btn" class="downlad-link-btn"
         >Download Resume
       </a>
     </div>
   </body>
+  <div id="audio-wrapper">
+    <audio id="hover-audio">
+      <source src="hover_btn.wav" type="audio/wav" />
+      <!--  <source src="horse.mp3" type="audio/mpeg" /> -->
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="click-audio">
+      <source src="click_btn.wav" type="audio/wav" />
+      <!-- <source src="horse.mp3" type="audio/mpeg" /> -->
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 
   <script>
     const contextMenu = document.getElementById("context-menu");
+    const contextMenuItems = document.querySelectorAll("#context-menu a");
     const downloadBtn = document.getElementById("download-btn");
+    const audioWrapper = document.getElementById("audio-wrapper");
+    const hoverAudioElement = document.getElementById("hover-audio");
+    const clickAudioElement = document.getElementById("click-audio");
+
     function showChoice() {
+      clickAudioElement.pause();
       if (contextMenu.classList.contains("hidden")) {
         contextMenu.classList.remove("hidden");
         downloadBtn.textContent = "Close";
@@ -982,10 +1013,29 @@
         contextMenu.classList.add("hidden");
         downloadBtn.textContent = "Download Resume";
       }
+      clickAudioElement.play();
     }
     function hideChoice() {
+      clickAudioElement.play();
       contextMenu.classList.add("hidden");
       downloadBtn.textContent = "Download Resume";
     }
+
+    function playHoverSound() {
+      let randomId = Math.floor(Math.random() * 10000);
+      audioWrapper.innerHTML = `<audio id="hover-audio-${randomId}">
+           <source src="hover_btn.wav" type="audio/wav" />
+    </audio>`;
+      const newAudioHoverElement = document.getElementById(
+        `hover-audio-${randomId}`
+      );
+      newAudioHoverElement.play();
+    }
+
+    function pauseHoverSound() {
+      hoverAudioElement.pause();
+    }
+
+    //downloadBtn.removeEventListener("mouseenter", E_hoverListener);
   </script>
 </html>
