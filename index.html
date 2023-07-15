@@ -260,6 +260,30 @@
         background-color: #ccc;
       }
 
+      .floating-context-menu {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        right: 50px;
+        bottom: 110px;
+      }
+      .context-menu-item {
+        text-decoration: none;
+        background-color: #fff;
+        border: 2px solid none;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 1px 1px 1px 2px #ccc;
+      }
+      .context-menu-item:hover {
+        background-color: #ccc;
+      }
+
+      .hidden {
+        display: none;
+      }
+
       @media screen and (max-width: 950px) {
         body {
           background: #fff;
@@ -919,15 +943,49 @@
     <div id="credit">
       Made with
       <span style="color: #e25555; font-size: 24px">&hearts;</span> by
-      <a href="https://www.nrj.dev/" target="_blank">dev nrj</a>
+      <a href="https://www.neerajmukta.com/" target="_blank">dev nrj</a>
     </div>
-    <div class="floating-btn">
+    <!--context menu-->
+    <div id="context-menu" class="floating-context-menu hidden">
       <a
-        href="https://drive.google.com/file/d/1Q73BM0oUT37FlOo3JnofcLG3yHmU2FY0/view?usp=sharing"
         download
-        class="downlad-link-btn"
+        target="_blank"
+        class="context-menu-item"
+        onclick="hideChoice()"
+        href="https://drive.google.com/file/d/1CerXr7S-KY1Q51Mh0uRZd3GoWSk20_8P/view?usp=drive_link"
+        >Lead Frontend Engineer</a
+      >
+      <a
+        download
+        target="_blank"
+        class="context-menu-item"
+        onclick="hideChoice()"
+        href="https://drive.google.com/file/d/1VwhDWnILL4JNi8WdDSBd-rVYwAGLuio1/view?usp=sharing"
+        >Lead Full-Stack Engineer</a
+      >
+    </div>
+    <div class="floating-btn" onclick="showChoice()">
+      <a download id="download-btn" class="downlad-link-btn"
         >Download Resume
       </a>
     </div>
   </body>
+
+  <script>
+    const contextMenu = document.getElementById("context-menu");
+    const downloadBtn = document.getElementById("download-btn");
+    function showChoice() {
+      if (contextMenu.classList.contains("hidden")) {
+        contextMenu.classList.remove("hidden");
+        downloadBtn.textContent = "Close";
+      } else {
+        contextMenu.classList.add("hidden");
+        downloadBtn.textContent = "Download Resume";
+      }
+    }
+    function hideChoice() {
+      contextMenu.classList.add("hidden");
+      downloadBtn.textContent = "Download Resume";
+    }
+  </script>
 </html>
