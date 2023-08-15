@@ -8,6 +8,28 @@
       rel="stylesheet"
       type="text/css"
     />
+    <!-- Calendly badge widget begin -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      type="text/javascript"
+      async
+    ></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        Calendly.initBadgeWidget({
+          url: "https://calendly.com/niraj-mukta123/introductory-call",
+          text: "Schedule a call",
+          color: "#3F3F3B",
+          textColor: "rgb(255, 231, 46)",
+          branding: undefined,
+        });
+      };
+    </script>
+    <!-- Calendly badge widget end -->
     <style type="text/css">
       body {
         background: #f0f0f0;
@@ -249,7 +271,7 @@
         text-decoration: none;
         position: fixed;
         right: 40px;
-        bottom: 40px;
+        top: 40px;
         background-color: rgb(255, 231, 46);
         border: 2px solid none;
         border-radius: 20px;
@@ -269,7 +291,7 @@
         flex-direction: column;
         gap: 20px;
         right: 50px;
-        bottom: 110px;
+        top: 110px;
         transition: all 0.5s ease-in;
       }
       .context-menu-item {
